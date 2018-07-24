@@ -1,35 +1,32 @@
-import browser from 'browser-detect';
 import { Title } from '@angular/platform-browser';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { ActivationEnd, Router, NavigationEnd } from '@angular/router';
+import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
-import { takeUntil, filter } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 import {
   ActionAuthLogin,
   ActionAuthLogout,
-  AnimationsService,
   selectorAuth,
-  routeAnimations
+  routerTransition
 } from '@app/core';
 import { environment as env } from '@env/environment';
 
-import {
-  NIGHT_MODE_THEME,
-  selectorSettings,
-  SettingsState,
-  ActionSettingsChangeAnimationsPageDisabled
-} from './settings';
+import { ANIMATE_ON_ROUTE_ENTER } from '@app/core';
+
+import { NIGHT_MODE_THEME, selectorSettings } from './settings';
 
 @Component({
   selector: 'anms-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [routeAnimations]
+  animations: [routerTransition]
 })
 export class AppComponent implements OnInit, OnDestroy {
+  animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   @HostBinding('class') componentCssClass;
@@ -40,9 +37,10 @@ export class AppComponent implements OnInit, OnDestroy {
   year = new Date().getFullYear();
   logo = require('../assets/logo.png');
   navigation = [
-    { link: 'about', label: 'About' },
-    { link: 'features', label: 'Features' },
-    { link: 'examples', label: 'Examples' }
+    { link: 'home', label: 'Home' },
+    { link: 'mods', label: 'MODs' },
+    { link: 'shop', label: 'Shop' },
+    { link: 'authenticate', label: 'Login'}
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -54,23 +52,47 @@ export class AppComponent implements OnInit, OnDestroy {
     public overlayContainer: OverlayContainer,
     private store: Store<any>,
     private router: Router,
-    private titleService: Title,
-    private animationService: AnimationsService
+    private titleService: Title
   ) {}
 
-  private static trackPageView(event: NavigationEnd) {
-    (<any>window).ga('set', 'page', event.urlAfterRedirects);
-    (<any>window).ga('send', 'pageview');
-  }
-
-  private static isIEorEdge() {
-    return ['ie', 'edge'].includes(browser().name);
-  }
-
   ngOnInit(): void {
-    this.subscribeToSettings();
-    this.subscribeToIsAuthenticated();
-    this.subscribeToRouterEvents();
+    this.store
+      .select(selectorSettings)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(settings => {
+        const { theme, autoNightMode } = settings;
+        const hours = new Date().getHours();
+        const effectiveTheme = (autoNightMode && (hours >= 20 || hours <= 6)
+          ? NIGHT_MODE_THEME
+          : theme
+        ).toLowerCase();
+        this.componentCssClass = effectiveTheme;
+        const classList = this.overlayContainer.getContainerElement().classList;
+        const toRemove = Array.from(classList).filter((item: string) =>
+          item.includes('-theme')
+        );
+        classList.remove(...toRemove);
+        classList.add(effectiveTheme);
+      });
+    this.store
+      .select(selectorAuth)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(auth => (this.isAuthenticated = auth.isAuthenticated));
+    this.router.events
+      .pipe(
+        takeUntil(this.unsubscribe$),
+        filter(event => event instanceof ActivationEnd)
+      )
+      .subscribe((event: ActivationEnd) => {
+        let lastChild = event.snapshot;
+        while (lastChild.children.length) {
+          lastChild = lastChild.children[0];
+        }
+        const { title } = lastChild.data;
+        this.titleService.setTitle(
+          title ? `${title} - ${env.appName}` : env.appName
+        );
+      });
   }
 
   ngOnDestroy(): void {
@@ -84,81 +106,5 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onLogoutClick() {
     this.store.dispatch(new ActionAuthLogout());
-  }
-
-  private subscribeToIsAuthenticated() {
-    this.store
-      .select(selectorAuth)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(auth => (this.isAuthenticated = auth.isAuthenticated));
-  }
-
-  private subscribeToSettings() {
-    if (AppComponent.isIEorEdge()) {
-      this.store.dispatch(
-        new ActionSettingsChangeAnimationsPageDisabled({
-          pageAnimationsDisabled: true
-        })
-      );
-    }
-    this.store
-      .select(selectorSettings)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(settings => {
-        this.setTheme(settings);
-        this.animationService.updateRouteAnimationType(
-          settings.pageAnimations,
-          settings.elementsAnimations
-        );
-      });
-  }
-
-  private setTheme(settings: SettingsState) {
-    const { theme, autoNightMode } = settings;
-    const hours = new Date().getHours();
-    const effectiveTheme = (autoNightMode && (hours >= 20 || hours <= 6)
-      ? NIGHT_MODE_THEME
-      : theme
-    ).toLowerCase();
-    this.componentCssClass = effectiveTheme;
-    const classList = this.overlayContainer.getContainerElement().classList;
-    const toRemove = Array.from(classList).filter((item: string) =>
-      item.includes('-theme')
-    );
-    if (toRemove.length) {
-      classList.remove(...toRemove);
-    }
-    classList.add(effectiveTheme);
-  }
-
-  private subscribeToRouterEvents() {
-    this.router.events
-      .pipe(
-        filter(
-          event =>
-            event instanceof ActivationEnd || event instanceof NavigationEnd
-        ),
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe(event => {
-        if (event instanceof ActivationEnd) {
-          this.setPageTitle(event);
-        }
-
-        if (event instanceof NavigationEnd) {
-          AppComponent.trackPageView(event);
-        }
-      });
-  }
-
-  private setPageTitle(event: ActivationEnd) {
-    let lastChild = event.snapshot;
-    while (lastChild.children.length) {
-      lastChild = lastChild.children[0];
-    }
-    const { title } = lastChild.data;
-    this.titleService.setTitle(
-      title ? `${title} - ${env.appName}` : env.appName
-    );
   }
 }

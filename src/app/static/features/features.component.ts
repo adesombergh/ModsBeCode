@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { environment as env } from '@env/environment';
-import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
+import { ANIMATE_ON_ROUTE_ENTER } from '@app/core';
 
 @Component({
   selector: 'anms-features',
@@ -9,7 +8,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent implements OnInit {
-  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
   versions = env.versions;
 
   ngOnInit() {}

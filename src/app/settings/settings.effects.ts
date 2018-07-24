@@ -4,7 +4,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { LocalStorageService, AnimationsService } from '@app/core';
+import { LocalStorageService } from '@app/core';
 
 import {
   SETTINGS_KEY,
@@ -16,22 +16,20 @@ import {
 export class SettingsEffects {
   constructor(
     private actions$: Actions<Action>,
-    private localStorageService: LocalStorageService,
-    private animationsService: AnimationsService
+    private localStorageService: LocalStorageService
   ) {}
 
   @Effect({ dispatch: false })
   persistSettings(): Observable<Action> {
-    return this.actions$.ofType(SettingsActionTypes.PERSIST).pipe(
-      tap((action: ActionSettingsPersist) => {
-        const { settings } = action.payload;
-        const { pageAnimations, elementsAnimations } = settings;
-        this.localStorageService.setItem(SETTINGS_KEY, settings);
-        this.animationsService.updateRouteAnimationType(
-          pageAnimations,
-          elementsAnimations
-        );
-      })
-    );
+    return this.actions$
+      .ofType(SettingsActionTypes.PERSIST)
+      .pipe(
+        tap((action: ActionSettingsPersist) =>
+          this.localStorageService.setItem(
+            SETTINGS_KEY,
+            action.payload.settings
+          )
+        )
+      );
   }
 }

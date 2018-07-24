@@ -1,0 +1,24 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  margin:0 auto;
+  width: 60%;
+}
+
+.formWrapper {
+  margin:0 auto;
+  width: 70%;
+  margin-top:70px;
+}
+
+.submit {
+  color: white !important;
+  font-size: 15px;
+}
+
+mat-icon {
+  color: #7EBA43;
+}

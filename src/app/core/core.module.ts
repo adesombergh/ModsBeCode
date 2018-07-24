@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment } from '@env/environment';
 
@@ -13,15 +12,16 @@ import { LocalStorageService } from './local-storage/local-storage.service';
 import { authReducer } from './auth/auth.reducer';
 import { AuthEffects } from './auth/auth.effects';
 import { AuthGuardService } from './auth/auth-guard.service';
-import { AnimationsService } from './animations/animations.service';
+import { AuthService } from '@app/core/auth/auth.service';
+import { ValidateService } from '@app/core/auth/validate.service';
+
+import { HttpModule } from '@angular/http';
+// import { RouterModule, Routes } from '@angular/router';
 
 export const metaReducers: MetaReducer<any>[] = [initStateFromLocalStorage];
 
 if (!environment.production) {
-  metaReducers.unshift(storeFreeze);
-  if (!environment.test) {
-    metaReducers.unshift(debug);
-  }
+  metaReducers.unshift(debug);
 }
 
 @NgModule({
@@ -29,6 +29,8 @@ if (!environment.production) {
     // angular
     CommonModule,
     HttpClientModule,
+    HttpModule,
+    // RouterModule,
 
     // ngrx
     StoreModule.forRoot(
@@ -40,7 +42,7 @@ if (!environment.production) {
     EffectsModule.forRoot([AuthEffects])
   ],
   declarations: [],
-  providers: [LocalStorageService, AuthGuardService, AnimationsService]
+  providers: [LocalStorageService, AuthGuardService, AuthService, ValidateService]
 })
 export class CoreModule {
   constructor(

@@ -1,0 +1,166 @@
+/* .left-menu, .right-menu {
+	position: absolute;
+	width: 250px;
+	z-index: 9999;
+	display: block;
+	top: 5px;
+}
+.left-menu {
+	left: 5px;
+	transition: left .8s cubic-bezier(0.42, 0, 0.15, 1.4);
+}
+.left-menu.hidden {
+	left: -200px;
+}
+.right-menu {
+	right: 5px;
+	width: 300px;
+	transition: right .8s cubic-bezier(0.42, 0, 0.15, 1.4);
+}
+.right-menu.hidden {
+	right: -250px;
+}
+
+.menu-tab {
+	background-color: rgba(255,255,255,.4);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 50px;
+}
+.right-menu .menu-tab {
+	width: 300px;
+}
+.tab-title {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 50px;
+	padding: 20px;
+}
+.right-menu .tab-title {
+	width: 250px;
+}
+.tab-icon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50px;
+	height: 50px;
+	float: right;
+}
+.tab-icon button {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	font-size: 20px;
+}
+.tab-icon button:hover {
+	background-color: rgba(255,255,255,.7);
+	color: rgba(0,0,0,.7);
+}
+
+
+.left-menu .tab-title {
+	border-left: 1px solid rgba(0,0,0,.3);
+	border-top: 1px solid rgba(0,0,0,.3);
+}
+.left-menu .tab-icon {
+	border: 1px solid rgba(0,0,0,.3);
+	border-left: none;
+}
+
+.right-menu .tab-title {
+	border-right: 1px solid rgba(0,0,0,.3);
+	border-top: 1px solid rgba(0,0,0,.3);
+	left: auto;
+	right: 0;
+}
+.right-menu .tab-icon {
+	border: 1px solid rgba(0,0,0,.3);
+	border-right: none;
+	left: 0;
+	right: auto;
+}
+
+.menu-content {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	display: block;
+	width: 200px;
+	background-color: rgba(255,255,255,.4);
+	border: 1px solid rgba(0,0,0,.3);
+	border-top: none;
+	padding: 20px;
+}
+.right-menu .menu-content {
+	right: 0;
+	left: auto;
+	width: 250px;
+}
+.submenu {
+	background-color: rgba(0,0,0,.1);
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+.menu-title, .badass-button {
+	color: #fff;
+	text-transform: uppercase;
+	background-color: #78B937;
+	padding: 7px 10px;
+	font-size: 24px;
+	margin: 0;
+	display: block;
+	text-decoration: none;
+}
+.menu-item {
+	display: block;
+	text-decoration: none;
+	color: #333;
+	margin: 10px 0;
+	padding-left: 20px;
+}
+.right-menu .menu-item {
+	font-size: 13px;
+}
+.overflower {
+	height: 100px;
+	overflow: scroll;
+}
+
+.toolbar {
+	position: absolute;
+	z-index: 99999;
+	left: 0px;
+	bottom: 5px;
+	background-color: rgba(255,255,255,.4);
+	border: 1px solid rgba(0,0,0,.3);
+}
+
+.toolbar-item {
+	display: inline-block;
+}
+.toolbar-separator{
+	display: inline-block;
+	width: 2px;
+	background-color: rgba(0,0,0,.4);
+	height: 20px;
+}
+
+.hide {
+	display: none;
+}
+#history {
+	width: 100%;
+	height: 100%;
+	background-color: none;
+} */

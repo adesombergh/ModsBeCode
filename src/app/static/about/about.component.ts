@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
+import { ANIMATE_ON_ROUTE_ENTER } from '@app/core';
 
 @Component({
   selector: 'anms-about',
@@ -8,10 +7,13 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  releaseButler = require('../../../assets/release-butler.png');
+  animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
 
-  constructor() {}
+  constructor(){
 
-  ngOnInit() {}
+  }
+
+  ngOnInit(){
+  }
+
 }

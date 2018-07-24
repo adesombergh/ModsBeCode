@@ -7,6 +7,7 @@
   mat-sidenav-container {
     mat-toolbar {
       button {
+        color:white;
         &.active {
           color: mat-color($accent, default-contrast);
           background-color: mat-color($accent);
@@ -24,14 +25,10 @@
     }
 
     mat-sidenav {
-      .mat-list-item {
+      a {
         &.active {
           color: mat-color($accent, default-contrast);
-          background-color: mat-color($accent) !important;
-
-          &:hover {
-            background-color: mat-color($accent, darker) !important;
-          }
+          background-color: mat-color($accent);
         }
       }
     }

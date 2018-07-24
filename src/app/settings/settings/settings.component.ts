@@ -7,8 +7,6 @@ import {
   selectorSettings,
   ActionSettingsChangeTheme,
   ActionSettingsChangeAutoNightMode,
-  ActionSettingsChangeAnimationsPage,
-  ActionSettingsChangeAnimationsElements,
   SettingsState,
   ActionSettingsPersist
 } from '../settings.reducer';
@@ -23,9 +21,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   settings: SettingsState;
 
   themes = [
-    { value: 'DEFAULT-THEME', label: 'Blue' },
+    { value: 'DEFAULT-THEME', label: 'Green' },
     { value: 'LIGHT-THEME', label: 'Light' },
-    { value: 'NATURE-THEME', label: 'Nature' },
     { value: 'BLACK-THEME', label: 'Dark' }
   ];
 
@@ -48,23 +45,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 
-  onAutoNightModeToggle({ checked: autoNightMode }) {
+  onAutoNightModeSelect({ value: autoNightMode }) {
     this.store.dispatch(
-      new ActionSettingsChangeAutoNightMode({ autoNightMode })
-    );
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
-  }
-
-  onPageAnimationsToggle({ checked: pageAnimations }) {
-    this.store.dispatch(
-      new ActionSettingsChangeAnimationsPage({ pageAnimations })
-    );
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
-  }
-
-  onElementsAnimationsToggle({ checked: elementsAnimations }) {
-    this.store.dispatch(
-      new ActionSettingsChangeAnimationsElements({ elementsAnimations })
+      new ActionSettingsChangeAutoNightMode({
+        autoNightMode: autoNightMode === 'true'
+      })
     );
     this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }

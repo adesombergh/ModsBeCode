@@ -1,0 +1,249 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let e of shop" [routerLink]="e.link" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    {{e.label}}
+  </a>
+</nav>
+<div id="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>My first construction</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+
+
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/images/mock-scene.png" alt="Card image">
+    <mat-card-content>
+      <button mat-raised-button class="btn-wht sml">
+        Edit scene
+      </button>
+      <button mat-raised-button class="btn-wht sml">
+        delete scene
+      </button>
+      <button mat-raised-button class="btn-wht lg">
+        order details
+      </button>
+      <button mat-raised-button class="btn-grn lg">
+        ask price offer
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>My second construction</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span>created on the 4th april 2018</span>
+
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/images/mock-scene.png" alt="Card image">
+    <mat-card-content>
+      <button mat-raised-button class="btn-wht lg">
+        order details
+      </button>
+      <form action="">
+        <mat-form-field>
+          <input matInput placeholder="project name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="quantity">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="communication" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+        <button mat-raised-button class="btn-wht sml">
+          cancel
+        </button>
+        <button mat-raised-button class="btn-grn sml">
+          save
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
+<!-- TUILE 1 -->
+<!-- <ion-row>
+
+
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+
+        <ion-card class="card">
+          <ion-card-header text-uppercase class="card-title">
+            project name
+          </ion-card-header>
+          <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
+
+
+
+          <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/imgs/mock-scene.png" alt="Card image">
+          <ion-card-content>
+            <ion-row class="hide">
+              <ion-col>
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                  Edit scene
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button text-uppercase block class=" btn btn-wht" (click)="onDelete()">
+                  delete
+                </button>
+              </ion-col>
+            </ion-row>
+
+            <button *ngIf="show" ion-button text-uppercase icon-left block class="btn btn-wht">
+              <ion-icon name="eye" item-start></ion-icon>
+              fill in project details
+            </button>
+            <form action="">
+              <ion-list>
+                <ion-item>
+                  <ion-label color="primary" stacked>Project name</ion-label>
+                  <ion-input placeholder="Type here your project name"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" stacked>Quantity</ion-label>
+                  <ion-input type="number" placeholder="..."></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" stacked>Message to MCB</ion-label>
+                  <ion-textarea placeholder="Comment your construction"></ion-textarea>
+                </ion-item>
+
+              </ion-list>
+              <ion-row>
+                  <ion-col>
+                    <button ion-button text-uppercase block class="btn btn-wht">
+                      cancel
+                    </button>
+                  </ion-col>
+                  <ion-col>
+                    <button ion-button text-uppercase block class=" btn btn-grn">
+                      save
+                    </button>
+                  </ion-col>
+                </ion-row>
+            </form>
+
+
+            <button ion-button text-uppercase icon-left block class="btn btn-grn hide" (click)="show = !show; onOrder()">
+              <ion-icon name="arrow-round-forward" item-start></ion-icon>
+              Ask price offer
+            </button>
+
+            <ion-note>
+              Please fill in your project details
+            </ion-note>
+
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-col> -->
+
+<!-- TUILE 2-->
+<!-- <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+
+        <ion-card class="card">
+          <ion-card-header text-uppercase class="card-title">
+            project name
+          </ion-card-header>
+          <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
+
+
+
+          <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/imgs/mock-scene.png" alt="Card image">
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                  Edit scene
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button text-uppercase block class=" btn btn-wht" (click)="onDelete()">
+                  delete
+                </button>
+              </ion-col>
+            </ion-row>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-wht" (click)="onOrderDetails()">
+              <ion-icon name="eye" item-start></ion-icon>
+              project details
+            </button>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-grn" (click)="show = !show; onOrder()">
+              <ion-icon name="arrow-round-forward" item-start></ion-icon>
+              Ask price offer
+            </button>
+
+            <ion-note>
+              MCB Atelier ©
+            </ion-note>
+
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-col> -->
+
+<!-- TUILE 3 -->
+<!-- <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+
+        <ion-card class="card">
+          <ion-card-header text-uppercase class="card-title">
+            cocoon stand
+          </ion-card-header>
+          <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
+
+          <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/imgs/mock-scene.png" alt="Card image">
+          <ion-card-content>
+            <ion-row>
+              <ion-col class="hide">
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                  Edit scene
+                </button>
+              </ion-col>
+              <ion-col class="hide">
+                <button ion-button text-uppercase block class=" btn btn-wht" (click)="onDelete()">
+                  delete
+                </button>
+              </ion-col>
+
+              <button ion-button text-uppercase icon-left block class="btn btn-inactive">
+                Awaiting answer
+              </button>
+            </ion-row>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-wht" (click)="onOrderDetails()">
+              <ion-icon name="eye" item-start></ion-icon>
+              project details
+            </button>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-grn">
+              <ion-icon name="close" item-start></ion-icon>
+              cancel demand
+            </button>
+
+            <ion-note>
+              MCB Atelier © request sent 08 feb 2018
+            </ion-note>
+
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-col>
+    </ion-row> -->

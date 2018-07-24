@@ -1,0 +1,99 @@
+<!-- Generated template for the ModEditorComponent component -->
+<div id="myFrame">
+	<div class="left-menu">
+	<div class="menu-tab">
+		<div class="tab-title">MODs</div>
+		<div class="tab-icon">
+			<button class="hideMenu" data-toggle=".left-menu"><i class="material-icons">menu</i></button>
+			<button id="all" matTooltip="Select all the items"><i class="material-icons">all_out</i></button>
+			<button id="addMod" matTooltip="Add 1 mod"><i class="material-icons">add</i></button>
+			<button id="color" matTooltip="Change selection's color"><i class="material-icons">invert_colors</i></button>
+			<button id="clone" matTooltip="Duplicate selection"><i class="material-icons">content_copy</i></button>
+			<div>
+				<button id="move" class="hide" matTooltip="Switch to translate mode"><i class="material-icons">gamepad</i></button>
+				<button id="rotate" matTooltip="Switch to rotate mode"><i class="material-icons">3d_rotation</i></button>
+			</div>
+
+			<button id="delete" matTooltip="Delete selection"><i class="material-icons">delete</i></button>
+		</div>
+	</div>
+	<div class="menu-content">
+		<div class="submenu">
+			<p matTooltip="Choose your surface"
+      matTooltipPosition="before" class="menu-title">Layers</p>
+			<a mat-button matTooltip="No surface will be used"
+      matTooltipPosition="before" class="menu-item menuBtn">Empty</a>
+			<a mat-button class="menu-item menuBtn">Floor</a>
+			<a mat-button class="menu-item menuBtn">Walls</a>
+			<button id="newElem" class="newElem" matTooltip="Add elements"><i class="material-icons">casino</i> Add</button>
+		</div>
+		<div class="submenu">
+			<p class="menu-title">Properties</p>
+			<a mat-button class="menu-item menuBtn" id="addMod">MOD</a>
+			<a mat-button class="menu-item menuBtn" id="fetchAllStructures">Presets</a>
+			<a mat-button class="menu-item menuBtn"id="fetchStructure">My Presets</a>
+		</div>
+		<!-- <div class="submenu">
+			<p class="menu-title">Assets</p>
+			<a mat-button class="menu-item menuBtn">Covering</a>
+			<a mat-button class="menu-item menuBtn">Props</a>
+			<a mat-button class="menu-item menuBtn">Images</a>
+			<a mat-button class="menu-item menuBtn">Lights</a>
+		</div> -->
+		<mat-grid-list cols="3" rowHeight="3:1">
+			<mat-grid-tile><a matTooltip="Remove everything"><i class="material-icons">layers_clear</i></a></mat-grid-tile>
+			<mat-grid-tile><a  id="saveStructure" matTooltip="Save to cloud"><i class="material-icons">save</i></a></mat-grid-tile>
+			<mat-grid-tile><a matTooltip="Add to cart"><i class="material-icons">add_shopping_cart</i></a></mat-grid-tile>
+		</mat-grid-list>
+	</div>
+</div>
+
+<!-- <div class="right-menu">
+	<div class="menu-tab">
+		<div class="tab-icon"><button class="hideMenu" data-toggle=".right-menu">+</button></div>
+		<div class="tab-title">Tools</div>
+	</div>
+	<div class="menu-content">
+		<div class="submenu">
+			<p class="menu-title">Objects</p>
+			<div class="overflower">
+				<ul id="objects">
+
+				</ul>
+			</div>
+		</div>
+		<div class="submenu">
+			<p class="menu-title">History</p>
+			<div class="overflower">
+				<ul id="history">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<!-- <div class="toolbar">
+	<div class="toolbar-item">
+    <mat-checkbox>Select Many</mat-checkbox>
+	</div>
+	<div class="toolbar-separator"></div>
+	<div class="toolbar-item">
+		<a mat-button id="move" class="hide">Translate</a>
+		<a mat-button id="rotate">Rotate</a>
+	</div>
+	<div class="toolbar-item">
+		<a mat-button id="delete">Delete</a>
+	</div>
+	<div class="toolbar-item">
+		<a mat-button id="clone">Clone</a>
+	</div>
+	<div class="toolbar-item">
+		<a>Group</a>
+	</div>
+	<div class="toolbar-separator"></div>
+	<div class="toolbar-item">
+		<a mat-button>Color</a>
+	</div>
+</div> -->
+
+</div>

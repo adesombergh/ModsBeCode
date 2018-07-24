@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { SettingsComponent } from './settings';
+import { SettingsComponent } from '@app/settings';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'shop',
+    loadChildren: 'app/shop/shop.module#ShopModule'
+  },
+  {
+    path: 'authenticate',
+    loadChildren: 'app/authentication/authentication.module#AuthenticationModule'
   },
   {
     path: 'settings',
@@ -17,12 +24,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'examples',
-    loadChildren: 'app/examples/examples.module#ExamplesModule'
-  },
-  {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: 'home'
   }
 ];
 

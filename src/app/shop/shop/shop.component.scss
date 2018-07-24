@@ -1,0 +1,84 @@
+nav {
+  margin-bottom: 20px;
+}
+
+// $green: #7EBA43;
+// $degradegreen: #8FBF60;
+// $lightgreen: #C5DBAF;
+// $darkreg: #838383;
+// $lightgrey: #D1D1D1;
+.hide {
+  display: none;
+}
+
+#container {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+}
+
+mat-card {
+  width: 350px;
+  padding: 0px;
+  margin-right: 0.4em;
+}
+
+mat-card-header {
+  width: 100%;
+  height: 65px;
+  background-image: linear-gradient(#7EBA43, #8FBF60); // box-shadow: 5px 5px rgba(138, 138, 138, 0.5) !important;
+}
+
+mat-card-title {
+  color: rgb(255, 255, 255);
+}
+
+mat-card-content {
+  padding: 16px;
+}
+
+mat-form // ion-card ion-row {
+//   margin-bottom: 20px;
+// }
+// ion-card ion-col:nth-child(odd) {
+//   margin-right: 5px;
+// }
+// ion-card ion-col:nth-child(even) {
+//   margin-left: 5px;
+// }
+button {
+  width: 100%;
+  border-radius: 0% !important;
+  border: 1px #7EBA43 !important;
+  margin-bottom: 0.5em;
+}
+
+.sml {
+  width: 50% !important;
+}
+
+.btn-grn {
+  background-image: linear-gradient( #8FBF60, #7EBA43);
+  color: #fff;
+}
+
+.btn-grn:active {
+  box-shadow: none;
+  background-color: #fff !important;
+  border: solid #8FBF60 1px;
+  color: #8FBF60;
+}
+
+.btn-wht {
+  background-color: #fff;
+  border: solid #8FBF60 1px !important;
+  color: #8FBF60;
+}
+
+.lg{
+  width: 100%;
+}
+// .btn-inactive {
+//   background-color: #AFC49B;
+//   box-shadow: none;
+// }

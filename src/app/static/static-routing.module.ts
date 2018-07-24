@@ -5,11 +5,11 @@ import { AboutComponent } from './about/about.component';
 import { FeaturesComponent } from './features/features.component';
 
 const routes: Routes = [
-  { path: 'about', component: AboutComponent, data: { title: 'About' } },
+  { path: 'home', component: AboutComponent, data: { title: 'Home' } },
   {
-    path: 'features',
+    path: 'mods',
     component: FeaturesComponent,
-    data: { title: 'Features' }
+    data: { title: 'MODs' }
   }
 ];
 

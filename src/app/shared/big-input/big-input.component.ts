@@ -1,10 +1,9 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'anms-big-input',
   templateUrl: './big-input.component.html',
-  styleUrls: ['./big-input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./big-input.component.scss']
 })
 export class BigInputComponent {
   @Input() placeholder: string;
